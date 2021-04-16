@@ -17,17 +17,11 @@
       </header>
 
       <main>
-        {{ content }}
+        <article class="page">
+          <h1 class="page-title">{{ page.title }}</h1>
+          {{ content }}
+        </article>        
       </main>
-
-      <footer class="footer">
-        <small>
-          &copy;
-          <time datetime="{{ site.time | date_to_xmlschema }}"
-            >{{ site.time | date: '%Y' }}</time
-          >. All rights reserved.
-        </small>
-      </footer>
     </div>
 
     {% if site.ga_analytics %}
