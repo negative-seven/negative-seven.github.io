@@ -1,0 +1,44 @@
+# TODO
+- spring despawn
+- fall inside flag
+- hammer bro behavior
+- clipping through walls using invisible blocks
+- hammer bros walking on coins
+- invis piranha in water (but not other enemies)
+- walking in place
+- damage clip
+- hammers don't kill on left side
+- bowser hammers no collision
+- bowser double damage
+- maze
+- hammer double death
+- enemy turnaround on mariodmg/landing
+- flagpole death
+- enemies on bottom layers
+- lowgrav
+- skating with fire mario
+- glitchy 6-3 bullet
+- glitchy vine
+- why does full fpg not keep you on the flag
+- object subpixel carryover
+- clips into blocks
+- walljumps
+- turning enemies into koopas
+- vram buffer corruption
+- minus world
+- jumping clip
+- wrong warp
+- broken conditional scroll stop
+- vine death
+- weird 4-2 vine extend
+- staying inside an enemy
+- hammers bouncing off you, killing you offscreen, etc
+- vscreenwrap mushroom grab
+- level beyond the flagpole
+- hitting a block with 2 objects on top of it
+- clipping with a coin
+- subpixel carryover
+- how cannons work
+
+- differences on PAL
+- differences in smb2j

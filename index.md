@@ -2,4 +2,9 @@
 layout: default
 ---
 
-One of those websites with nothing interesting going on.
+Some girl interested in old games
+\
+\
+\
+Things I've written:
+- [Super Mario Bros. 1 bugs explained](/smb1explained) (WIP)
