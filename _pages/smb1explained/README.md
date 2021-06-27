@@ -5,7 +5,6 @@
 - clipping through walls using invisible blocks
 - hammer bros walking on coins
 - invis piranha in water (but not other enemies)
-- walking in place
 - damage clip
 - hammers don't kill on left side
 - bowser hammers no collision
@@ -23,12 +22,10 @@
 - object subpixel carryover
 - clips into blocks
 - walljumps
-- turning enemies into koopas
 - vram buffer corruption
 - minus world
 - jumping clip
 - wrong warp
-- broken conditional scroll stop
 - vine death
 - weird 4-2 vine extend
 - staying inside an enemy
@@ -39,6 +36,9 @@
 - clipping with a coin
 - subpixel carryover
 - how cannons work
+- frame rules
+- life counter wraparound
+- no brick particles on left side of screen
 
 - differences on PAL
 - differences in smb2j
