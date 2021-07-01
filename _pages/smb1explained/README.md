@@ -1,6 +1,5 @@
 # TODO
 - spring despawn
-- fall inside flag
 - hammer bro behavior
 - clipping through walls using invisible blocks
 - hammer bros walking on coins
@@ -22,7 +21,6 @@
 - object subpixel carryover
 - clips into blocks
 - walljumps
-- vram buffer corruption
 - minus world
 - jumping clip
 - wrong warp
@@ -39,6 +37,9 @@
 - frame rules
 - life counter wraparound
 - no brick particles on left side of screen
+- palette bug on bowser
+- uninitialized memory
+- jumping up through platforms
 
 - differences on PAL
 - differences in smb2j
