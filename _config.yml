@@ -24,7 +24,7 @@ sass:
 collections:
   pages:
     output: true
-    permalink: /:name
+    permalink: /:path:output_ext
 
 # Options
 
