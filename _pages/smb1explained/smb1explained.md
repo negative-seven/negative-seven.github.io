@@ -3,29 +3,6 @@ layout: default
 title: Super Mario Bros. 1 bugs and mechanics explained
 ---
 
-# Incorrect player size (aka "small fire mario")
-Two variables control the player's powerup state:
-- `PlayerStatus` (0 = no powerup, 1 = mushroom, 2 = fire flower)
-- `PlayerSize` (0 = small, 1 = big)
-
-There are 3 ways the player's powerup state is intended to change:
-- No powerup → mushroom: `PlayerStatus` is changed from 0 to 1 and, after a delay, `PlayerSize` is flipped from 0 to 1.
-- Mushroom → fire flower: `PlayerStatus` is changed from 1 to 2.
-- Mushroom/fire flower → no powerup: `PlayerStatus` is changed from 1 or 2 to 0 and, after a delay, `PlayerSize` is flipped from 1 to 0.
-
-In the first and third case, the delayed `PlayerSize` change happens as such: first, at the same time `PlayerStatus` is written to, a timer (`TimerControl`) starts counting down by 1 every frame from $ff. Then, normally, when that timer reaches $f8 (growing) or $f0 (shrinking), `PlayerSize` is XOR-ed with 1, flipping the value.
-
-A problem arises when an axe is touched at the same time the player has a powerup and gets hit. `PlayerStatus` gets changed immediately and as intended, but the code to change `PlayerSize` when `TimerControl` has reached a certain value no longer gets run. Touching the axe causes the start of the end-of-castle cutscene, setting `OperMode` to 2 and stopping the handling of many gameplay events. Meanwhile, `TimerControl` ticks down to 0 during the cutscene and the "taking damage" state (`GameEngineSubroutine == 2`) is overridden before the start of the next level, and so the size change doesn't ever happen.
-
-`PlayerStatus` and `PlayerSize` are always assumed to be in sync (either both equal to 0 or both non-zero), so there is nothing in place to check for or fix a desync. Taking damage at the same time as touching an axe creates a desync, where `PlayerStatus` is 0 but `PlayerSize` is 1. This desync persists through normal gameplay, because any time `PlayerSize` is changed, it is always flipped to the other value, rather than explicitly being set to the intended value. The final result of this is the following powerup progression for the player: big + no powerup → small + has mushroom → small + has fire flower. Performing the bug a second time sets everything back to normal, for similar reasons as before.
-\
-&nbsp;
-
-# Powerup jump
-When you collect a powerup that changes your powerup status, `Player_State` gets set to 0, meaning that even if you are in the air, you will actualy be considered to be on the ground for some checks. This stems from sharing code between the powering up animation and the death animation, the latter of which alters `Player_State` when making the player jump up upon death. After a frame of movement, `Player_State` gets updated to the correct value, but prior to that there is one frame where you can turn around or jump, even in the air. The jump can be buffered during the powering up animation, giving much more than a frame to perform this trick.
-\
-&nbsp;
-
 # VRAM buffer corruption
 As part of handling nametable (tilemap) and palette updates, Super Mario Bros. uses two buffers: `VRAM_Buffer1` (63 bytes of capacity) and `VRAM_Buffer2` (35 bytes). They are used to temporarily store these updates, as they cannot be handled immediately (while the current frame is being drawn) without visual glitches, only during vertical blanking (a period of time in between drawing frames during which no rendering happens). The second buffer is used for drawing new columns of the level, while the first is used for everything else.
 
@@ -89,6 +66,29 @@ When an enemy is either hit by a shell or by a block from underneath, The routin
 - flying green Paratroopa (#$10) -> green Koopa (#$0)
 
 Presumably by mistake, `ChkToStunEnemies` is run twice in the case of enemies getting hit by blocks, and the second time the enemy's on-screen horizontal pixel position is compared to the above values instead of its ID. This means that any enemy that gets hit by a block at an x position of 14 or 16 becomes a green koopa, and at an x position of 9, 13 or 15 becomes a red koopa. All of these positions are near the left edge of the screen.
+\
+&nbsp;
+
+# Incorrect player size (aka "small fire mario")
+Two variables control the player's powerup state:
+- `PlayerStatus` (0 = no powerup, 1 = mushroom, 2 = fire flower)
+- `PlayerSize` (0 = small, 1 = big)
+
+There are 3 ways the player's powerup state is intended to change:
+- No powerup → mushroom: `PlayerStatus` is changed from 0 to 1 and, after a delay, `PlayerSize` is flipped from 0 to 1.
+- Mushroom → fire flower: `PlayerStatus` is changed from 1 to 2.
+- Mushroom/fire flower → no powerup: `PlayerStatus` is changed from 1 or 2 to 0 and, after a delay, `PlayerSize` is flipped from 1 to 0.
+
+In the first and third case, the delayed `PlayerSize` change happens as such: first, at the same time `PlayerStatus` is written to, a timer (`TimerControl`) starts counting down by 1 every frame from $ff. Then, normally, when that timer reaches $f8 (growing) or $f0 (shrinking), `PlayerSize` is XOR-ed with 1, flipping the value.
+
+A problem arises when an axe is touched at the same time the player has a powerup and gets hit. `PlayerStatus` gets changed immediately and as intended, but the code to change `PlayerSize` when `TimerControl` has reached a certain value no longer gets run. Touching the axe causes the start of the end-of-castle cutscene, setting `OperMode` to 2 and stopping the handling of many gameplay events. Meanwhile, `TimerControl` ticks down to 0 during the cutscene and the "taking damage" state (`GameEngineSubroutine == 2`) is overridden before the start of the next level, and so the size change doesn't ever happen.
+
+`PlayerStatus` and `PlayerSize` are always assumed to be in sync (either both equal to 0 or both non-zero), so there is nothing in place to check for or fix a desync. Taking damage at the same time as touching an axe creates a desync, where `PlayerStatus` is 0 but `PlayerSize` is 1. This desync persists through normal gameplay, because any time `PlayerSize` is changed, it is always flipped to the other value, rather than explicitly being set to the intended value. The final result of this is the following powerup progression for the player: big + no powerup → small + has mushroom → small + has fire flower. Performing the bug a second time sets everything back to normal, for similar reasons as before.
+\
+&nbsp;
+
+# Powerup jump
+When you collect a powerup that changes your powerup status, `Player_State` gets set to 0, meaning that even if you are in the air, you will actualy be considered to be on the ground for some checks. This stems from sharing code between the powering up animation and the death animation, the latter of which alters `Player_State` when making the player jump up upon death. After a frame of movement, `Player_State` gets updated to the correct value, but prior to that there is one frame where you can turn around or jump, even in the air. The jump can be buffered during the powering up animation, giving much more than a frame to perform this trick.
 \
 &nbsp;
 
