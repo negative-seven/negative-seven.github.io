@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Super Mario Bros. 1 bugs and mechanics explained
-permalink: :name
 ---
 
 # VRAM buffer corruption
