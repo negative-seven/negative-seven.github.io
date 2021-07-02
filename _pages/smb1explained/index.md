@@ -32,6 +32,8 @@ Fun fact: while loading in a new area, `VRAM_Buffer2` gets filled up far beyond 
 &nbsp;
 
 # Fireballing objects at a wrong position
+([video](https://www.youtube.com/watch?v=vhsuPO8oCtc))
+
 For the first frame of an object's existence, it inherits the hitbox data (`EnemyBoundingBoxCoord`) and offscreen flag (`EnemyOffscrBitsMasked`) which already corresponded with its slot (either the data of the object that was previously loaded into that slot, or null values if the slot hasn't been filled since the start of the area). This is usually not a problem, as most of the time newly loaded objects also get `EnemyOffscrBitsMasked` set to a non-zero value, preventing collisions. However, Piranha Plants, Bullet Bills and Bowser Flames, which when appearing together with pipes / from Bullet Bill Cannons / from Bowsers have different spawn code, do not update this value immediately. If equal to 0, this allows for a fireball to hit one of these objects on the first frame, hitting its unintended, inherited hitbox. Note that these objects cannot hit the player in this way, as collision checks with the player begin one frame after the object has spawned.
 \
 &nbsp;
@@ -78,6 +80,8 @@ Presumably by mistake, `ChkToStunEnemies` is run twice in the case of enemies ge
 &nbsp;
 
 # Incorrect player size (aka "small fire mario")
+([video](https://www.youtube.com/watch?v=v2lVgHaRDf8))
+
 Two variables control the player's powerup state:
 - `PlayerStatus` (0 = no powerup, 1 = mushroom, 2 = fire flower)
 - `PlayerSize` (0 = small, 1 = big)
