@@ -116,7 +116,7 @@ Vine/flag collision is determined by checking if the low nybble of the player's 
 &nbsp;
 
 # Random number generation
-Super Mario Bros. 1 uses a 7-byte / 56-bit linear feedback shift register (`PseudoRandomBitReg`) to generate random numbers, used for all pseudorandom events in the game. When the game is powered on or reset, the first byte gets initialized as $a5, and the rest as zeroes. After that, all 7 bytes are updated every frame as such: all 56 bits are first shifted to the right by 1 (with the rightmost bit being discarded), and the new leftmost bit 55 is set to bit 40 XNOR bit 48.
+Super Mario Bros. 1 uses a 7-byte / 56-bit linear feedback shift register (`PseudoRandomBitReg`) to generate random numbers, used for all pseudorandom events in the game. When the game is powered on or reset, the first byte gets initialized as $a5, and the rest as zeroes. After that, all 7 bytes are updated every frame as such: all 56 bits are first shifted to the right by 1 (with the rightmost bit being discarded), and the new leftmost bit 55 is set to bit 40 XOR bit 48.
 
 Although 7 bytes is enough to store 2^56 different states, the random number generator loops after only 2^15 - 1 = 32767 iterations (and this loop is entered after 39 iterations from initialization). This is because the 15 most significant bits are enough to dictate the long-term future of the register.
 
