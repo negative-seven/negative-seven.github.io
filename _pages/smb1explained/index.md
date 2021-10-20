@@ -73,8 +73,8 @@ The condition for the presumably intended effect should be either `Player_Y_Posi
 <video class="centered-image" autoplay muted loop><source src="resources/enemy_change.webm" type="video/webm"></video>
 
 When an enemy is either hit by a shell or by a block from underneath, The routine (`ChkToStunEnemies`) is run that handles enemies getting hit and jumping up. One of the things this routine is reponsible for is demoting Paratroopas to Koopas. It does this by checking to see if the hit enemy's ID is equal to #$9, #$d, #$e, #$f or #$10, and if so, bitwise-ANDs the ID with 1, preserving only the last bit. This results in the following enemy transformations:
-- immobile green Paratroopa (#$9) -> red Koopa (#$1) (this enemy is unused)
-- Piranha Plant (#$d) -> red Koopa (#$1) (this enemy does not get hit by shells or blocks)
+- immobile green Paratroopa (#$9) -> red Koopa (#$1) (this green Koopa is unused)
+- Piranha Plant (#$d) -> red Koopa (#$1) (Piranha Plants do not get hit by shells or blocks)
 - jumping green Paratroopa (#$e) -> green Koopa (#$0)
 - flying red Paratroopa (#$f) -> red Koopa (#$1)
 - flying green Paratroopa (#$10) -> green Koopa (#$0)
