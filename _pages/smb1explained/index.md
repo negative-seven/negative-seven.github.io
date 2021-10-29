@@ -88,7 +88,7 @@ Presumably by mistake, `ChkToStunEnemies` is run twice in the case of enemies ge
 
 Two variables control the player's powerup state:
 - `PlayerStatus` (0 = no powerup, 1 = mushroom, 2 = fire flower)
-- `PlayerSize` (0 = small, 1 = big)
+- `PlayerSize` (0 = big, 1 = small)
 
 There are 3 ways the player's powerup state is intended to change:
 - No powerup → mushroom: `PlayerStatus` is changed from 0 to 1 and, after a delay, `PlayerSize` is flipped from 0 to 1.
