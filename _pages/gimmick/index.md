@@ -3,6 +3,16 @@ layout: default
 title: Gimmick! bugs and mechanics explained
 ---
 
+# Horizontal speed
+
+Under normal conditions, the player's maximum horizontal speed is as follows (measured in 1/16ths of a pixel per frame):
+- moving right on ground: alternates between 22 and 23 every frame
+- moving left on ground: alternates between 23 and 24 every frame
+- moving right in air: either 23 or 24 (depends on parity)
+- moving left in air: either 24 or 25 (depends on parity)
+
+"Parity" refers to whether or not the speed is even or odd. Since movement speed normally changes in multiples of 2 in the air, parity is generally fixed in the air and can only change from eg. moving on the ground or hitting a wall.
+
 # Item drops
 
 Item drops are not random. When an enemy is killed, it will drop an item if all of the following conditions are met:
@@ -25,7 +35,13 @@ This bug allows for clipping into ceilings by jumping into them, as well as clip
 
 There are 10 slots (0 to 9) for enemies to exist in, with slot 0 being reserved for the player and slot 1 for the active star/bomb/fireball. This leaves slots 2-9 for enemies in the game to use. If all of these slots are occupied, no new enemies will be able to spawn. Combined with the fact that fireballs and bombs spawn many particles, which can occupy slots 2-8, it's possible to prevent some unexpected enemies from spawning, as can be seen [here](https://www.youtube.com/watch?v=8Tqw8Dx3KV8).
 
+# Item bug
+<video class="centered-image" autoplay muted loop><source src="resources/item_bug.webm" type="video/webm"></video>
+
+By holding up and pressing down and B on the same frame, it's possible to use an item and switch items at the same time, causing the initially selected item to be used but the next item in the inventory to get used up. Unfortunately, holding up and down at the same time on a standard NES controller is generally not possible.
+
 # Sleeping Pirate
+![](resources/pirate_bug.png){:class="centered-image"}
 
 The Pirate boss in level 2 is intended to spawn in one of two ways; either sleeping next to an alarm clock Ohagi or immediately awake with no Ohagi. This depends on the 2-byte level timer ($ed-$ee), which tracks the number of frames that have passed since the start of the level. If the upper byte has a value of $10 or above (corresponding to 4096 frames or &#126;68 seconds having passed), the awake version of the boss will spawn; otherwise, it will be the asleep version. However, the use of the raw global timer value to determine the initial boss state has some interesting consequences.
 
