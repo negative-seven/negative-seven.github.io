@@ -28,47 +28,49 @@ function getProbabilityOfHit(aimX, aimY) {
 		bouncePower *= 0.5
 	}
 	
-	positions = [[aimX, aimY]]
+	positions = [[aimX, aimY, 1]]
 	for (let isBigBounce of bounces) {
-		newPositions = []
+		allNewPositions = []
 		for (let position of positions) {
+			newPositions = []
 			n = isBigBounce ? 2 : 1
 			x = position[0]
 			y = position[1]
+			weight = position[2]
 
-			newPositions.push([x - n, y - n])
-			newPositions.push([x, y - n])
-			newPositions.push([x + n, y - n])
-			newPositions.push([x - n, y])
-			newPositions.push([x + n, y])
-			newPositions.push([x - n, y + n])
-			newPositions.push([x, y + n])
-			newPositions.push([x + n, y + n])
+			newPositions.push([x - n, y - n, weight])
+			newPositions.push([x, y - n, weight])
+			newPositions.push([x + n, y - n, weight])
+			newPositions.push([x - n, y, weight])
+			newPositions.push([x + n, y, weight])
+			newPositions.push([x - n, y + n, weight])
+			newPositions.push([x, y + n, weight])
+			newPositions.push([x + n, y + n, weight])
 
 			if (!isBigBounce) {
-				newPositions.push([x, y])
+				newPositions.push([x, y, weight])
 			}
+
+			newPositions = newPositions.filter(p => p[0] >= 0 && p[0] < 8 && p[1] >= 0 && p[1] < 8)
+			for (let position of newPositions) {
+				position[2] /= newPositions.length
+			}
+			allNewPositions.push(...newPositions)
 		}
 
-		positions = []
-		for (let position of newPositions) {
-			x = position[0]
-			y = position[1]
-			if (x >= 0 && x < 8 && y >= 0 && y < 8) {
-				positions.push(position)
-			}
-		}
+		positions = allNewPositions
 	}
 
-	hitCount = 0
+	probability = 0
 	for (let position of positions) {
 		dx = position[0] - targetX
 		dy = position[1] - targetY
+		weight = position[2]
 		if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1) {
-			hitCount++
+			probability += weight
 		}
 	}
-	return hitCount / positions.length
+	return probability
 }
 
 function getGradientColor(value, maxValue) {
