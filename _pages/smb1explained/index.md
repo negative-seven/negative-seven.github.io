@@ -3,6 +3,9 @@ layout: default
 title: Super Mario Bros. 1 bugs and mechanics explained
 ---
 
+* 
+{:toc}
+
 # VRAM buffer corruption
 ![](resources/vram_corruption.png){:class="centered-image"}
 
