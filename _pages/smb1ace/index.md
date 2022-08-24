@@ -3,18 +3,21 @@ layout: default
 title: Super Mario Bros. 1 ACE FAQ
 ---
 
+* 
+{:toc}
+
 # What is arbitrary code execution?
 Arbitrary code execution (often abbreviated as ACE) is the abuse of a vulnerability in software to execute user-constructed code during runtime. In the case of NES games, it requires the program counter (which points to the currently executed instruction) to escape the confines of the intended code flow. This can happen in a few ways, e.g.due to: the [wrong ROM bank being loaded](https://tasvideos.org/4567M), inducing an [unintended indirect jump](https://tasvideos.org/2868M) or corrupting the stack and returning to a corrupted address. The end goal is usually to jump execution to RAM, in which data can be set up as valid code instructions to run desired code. However, what is difficult in practice is actually finding a bug in the game which allows for any of this. Even if a bug is glitchy-looking and game-breaking, it does not mean that it can allow for ACE.
 \
 &nbsp;
 
 # Isn't the game too simple for ACE?
-Without either performing or ruling out ACE, this will have to be a subjective answer, but... not really, no. Super Mario Bros. has a multitude of different bugs, and new discoveries are still being made (such as [this](https://www.youtube.com/watch?v=WJC17L9aYp8) and [this](https://www.youtube.com/watch?v=BLlZ0OhrSb4)). New applications of known glitches are also not out of the question. It's true that the game is smaller in size than most NES games and has a complete disassembly, but despite these facts research has not stagnated.
+Without either performing or ruling out ACE, this will have to be a subjective answer, but... not really, no. Super Mario Bros. has a multitude of different bugs, and new discoveries are still being made (such as [this](https://www.youtube.com/watch?v=WJC17L9aYp8) and [this](https://www.youtube.com/watch?v=BLlZ0OhrSb4)). New applications of known bugs are also not out of the question. It's true that the game is smaller in size than most NES games and has a complete disassembly, but despite these facts research has not stagnated.
 \
 &nbsp;
 
-# Can you use the same trick used to beat Super Mario Bros. 3 from the title screen?
-[The run in question](https://tasvideos.org/4567M) uses a trick which will be referred to as the "DPCM conflict workaround exploit" - a slightly convoluted but apt name. The Famicom and NTSC NES have a hardware bug which can cause DPCM audio samples to corrupt controller data reads. The bug was known about by NES developers early on in the console's life cycle and many games which used DPCM samples implemented a workaround where controller data is polled repeatedly until two consecutive reads match - the read data is then assumed to be correct, which is the case most of the time. Super Mario Bros. does not use this feature of the console and thus does not feature the workaround, which means that this trick cannot be used here.
+# Can you use the same trick that was used to beat Super Mario Bros. 3 from the title screen?
+[The run in question](https://tasvideos.org/4567M) uses a trick which will be referred to as the "DPCM conflict workaround exploit" - a slightly convoluted but apt name. The Famicom and NTSC NES have a hardware bug which can cause DPCM audio samples to corrupt controller data reads. The bug was known about by NES developers early on in the console's lifecycle and many games which used DPCM samples implemented a workaround where controller data is polled repeatedly until two consecutive reads match - the read data is then assumed to be correct, which is the case most of the time. Super Mario Bros. does not use this feature of the console and thus the input reading code does not have the workaround, which means that this trick cannot be used here.
 \
 &nbsp;
 
