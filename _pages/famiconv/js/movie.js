@@ -132,4 +132,53 @@ class Movie {
         movieData.file('Subtitles.txt', subtitlesData);
         return await movieData.generateAsync({ type: 'base64' });
     }
+
+    async toMmoFormatAsync() {
+        let gameSettingsData = [
+            'MesenVersion 0.9.9',
+            'MovieFormatVersion 1',
+            `GameFile ${this.romFilename}`,
+            'Region NTSC',
+            'ConsoleType Famicom',
+            'Controller1 StandardController',
+            'Controller2 StandardController',
+            'ExpansionDevice None',
+            'ExtraScanlinesBeforeNmi 0',
+            'ExtraScanlinesAfterNmi 0',
+            'DisablePpu2004Reads false',
+            'DisablePaletteRead false',
+            'DisableOamAddrBug false',
+            'UseNes101Hvc101Behavior false',
+            'EnableOamDecay false',
+            'DisablePpuReset false',
+            'ZapperDetectionRadius 0',
+            'RamPowerOnState 0',
+        ].join('\n') + '\n';
+
+        let movieInfoData = 'Author\nDescription\n';
+
+        let inputsDataLines = [];
+        for (let input of this.inputs) {
+            const BUTTONS = 'UDLRSsBA';
+
+            let inputLine = '|..|........|.........'.split('');
+
+            for (let button of input.controller0) {
+                inputLine[4 + BUTTONS.indexOf(button)] = button;
+            }
+
+            for (let button of input.controller1) {
+                inputLine[13 + BUTTONS.indexOf(button)] = button;
+            }
+
+            inputsDataLines.push(inputLine.join(''));
+        }
+        let inputsData = inputsDataLines.join('\n') + '\n';
+
+        let movieData = new JSZip();
+        movieData.file('GameSettings.txt', gameSettingsData);
+        movieData.file('MovieInfo.txt', movieInfoData);
+        movieData.file('Input.txt', inputsData);
+        return await movieData.generateAsync({ type: 'base64' });
+    }
 }

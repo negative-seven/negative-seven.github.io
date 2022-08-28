@@ -6,7 +6,8 @@ title: famiconv
 
 Upload .fm2 movie file: <input type="file" id="fileSelector">
 
-<button id="downloadButton">Download .bk2 movie file</button>
+<button id="bk2DownloadButton">Download .bk2 movie file</button>
+<button id="mmoDownloadButton">Download .mmo movie file</button>
 
 Hopefully in the future, this page will allow for converting freely between FCEUX, BizHawk and Mesen movie files. For now, only .fm2 -> .bk2 conversion is supported.
 
