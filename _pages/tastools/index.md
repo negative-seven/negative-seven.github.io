@@ -3,7 +3,7 @@ layout: default
 title: List of game-specific and engine-specific TAS tools
 ---
 
-Note that most of the respective communities or individuals were not contacted while making this list, which may result in inaccurate or outdated information.
+Note that most of the respective communities or creators were not contacted while making this list, and thus some information may be inaccurate or outdated.
 
 | Game/engine | Tool | Sample TAS(es) | Website |
 |:-|:-|:-|:-|
@@ -13,7 +13,7 @@ Note that most of the respective communities or individuals were not contacted w
 | Candy Box 2 | [Greasemonkey script](https://pastebin.com/d0RHZHn2) | [reddit post](https://www.reddit.com/r/candybox/comments/d8i1u1/cb2_first_ever_cb2_tas_1023/) (details in comments) |
 | Celeste | [CelesteTAS-EverestInterop](https://github.com/EverestAPI/CelesteTAS-EverestInterop) | [playlist](https://youtube.com/playlist?list=PLC5x4tN0gVAxTJTfyHLK0R5gEJVucoVU1) |
 | CELESTE Classic | [UniversalClassicTas](https://github.com/CelesteClassic/UniversalClassicTas) | [video](https://www.youtube.com/watch?v=irO5st7rQo8) (ported to libTAS) | [link](https://celesteclassic.github.io/tasdatabase/)
-| | [ClassicTAS](https://github.com/CelesteClassic/ClassicTAS) |
+| | [ClassicTAS](https://github.com/CelesteClassic/ClassicTAS) | | [link](https://celesteclassic.github.io/tasdatabase/)
 | Dark Souls 1 | [DarkSouls-TAS](https://github.com/DavidCEllis/DarkSouls-TAS) | [video](https://www.youtube.com/watch?v=gf_ApkcKt6I) |
 | Doom | [PrBoom+](https://github.com/coelckers/prboom-plus) | [TASvideos page](https://tasvideos.org/Movies-doom) |
 | | [XDRE](https://notabug.org/38_ViTa_38/xdre) (PrBoom+ replay editor) | [TASvideos page](https://tasvideos.org/Movies-doom) |
@@ -30,6 +30,7 @@ Note that most of the respective communities or individuals were not contacted w
 | Iji | [Iji TAS mod](https://github.com/Kataiser/Iji-TAS-mod) |
 | Jump King | [JumpKingTAS](https://github.com/ShootMe/JumpKingTAS) | [video](https://www.youtube.com/watch?v=LZlo6TzL7N4) |
 | Kalimba | [KalimbaTAS](https://github.com/ShootMe/KalimbaTAS) | [video](https://www.youtube.com/watch?v=JhOv177sQVE)
+| La-Mulana Remake | [LaMulanaTAS](https://github.com/worsety/LaMulanaTAS) | [video](https://www.youtube.com/watch?v=SR62XOkUuN8)
 | Left 4 Dead & Left 4 Dead 2 | [Left4TAS](https://github.com/sw1ft747/Left4TAS) | [video](https://www.youtube.com/watch?v=0PDeOglDmy0) |
 | Minecraft | [FabricTAS](https://www.curseforge.com/minecraft/mc-mods/rtas) | [video](https://www.youtube.com/watch?v=i-ZR5-COTcU) | [link](https://minecrafttas.com/)
 | | [TASmod](https://www.curseforge.com/minecraft/mc-mods/tasmod) | [video](https://www.youtube.com/watch?v=1kuAETMT4RE) | [link](https://minecrafttas.com/) |
@@ -47,8 +48,8 @@ Note that most of the respective communities or individuals were not contacted w
 | Rocket League | [skrrripted](https://github.com/spacefluff432/skrrripted) | [video](https://twitter.com/i/status/1248611698874806274) |
 | Smol Ame | [SmolTAS](https://github.com/Sh1r0Yaksha/SmolTAS) | [video](https://www.youtube.com/watch?v=sPJHTvnPQRg) |
 | Source engine | [SourcePauseTool](https://github.com/YaLTeR/SourcePauseTool) | [video](https://www.youtube.com/watch?v=W9gxFkOz2_4), [video](https://www.youtube.com/watch?v=jJqcEgLXNeo) |
-| Splasher | [SplasherTAS](https://github.com/ShootMe/SplasherTAS) | [video](https://www.youtube.com/watch?v=TwSme7Mq7JM) |
 | | [Bunnymod XT](https://github.com/YaLTeR/BunnymodXT) (for GoldSrc games) | [video](https://www.youtube.com/watch?v=J0n-TIrpkDA) |
+| Splasher | [SplasherTAS](https://github.com/ShootMe/SplasherTAS) | [video](https://www.youtube.com/watch?v=TwSme7Mq7JM) |
 | Super Mario 64 | [wafel](https://github.com/branpk/wafel) | [video](https://www.youtube.com/watch?v=bLrmpZbjb20) |
 | Super Mario Flash | mod obtainable from [speedrunning Discord server](https://discord.com/invite/b6nm2dj); obsoleted by libTAS + Ruffle | [video](https://www.youtube.com/watch?v=5y9c3U2wcTY) |
 | Team Fortress 2 | [TAS Plugin](https://jump.tf/forum/index.php/topic,1350.0.html) | [video](https://www.youtube.com/watch?v=RvhA7Y2AI7o) |
