@@ -49,6 +49,7 @@ Note that most of the respective communities or creators were not contacted whil
 | Smol Ame | [SmolTAS](https://github.com/Sh1r0Yaksha/SmolTAS) | [video](https://www.youtube.com/watch?v=sPJHTvnPQRg) |
 | Source engine | [SourcePauseTool](https://github.com/YaLTeR/SourcePauseTool) | [video](https://www.youtube.com/watch?v=W9gxFkOz2_4), [video](https://www.youtube.com/watch?v=jJqcEgLXNeo) |
 | | [Bunnymod XT](https://github.com/YaLTeR/BunnymodXT) (for GoldSrc games) | [video](https://www.youtube.com/watch?v=J0n-TIrpkDA) |
+| SpeedRunners | tool by `rbit ✨#4860` on Discord | [playlist](https://www.youtube.com/playlist?list=PLuIb5F2J41oo29uTNZM3yXWoi6zyREiNj) |
 | Splasher | [SplasherTAS](https://github.com/ShootMe/SplasherTAS) | [video](https://www.youtube.com/watch?v=TwSme7Mq7JM) |
 | Super Mario 64 | [wafel](https://github.com/branpk/wafel) | [video](https://www.youtube.com/watch?v=bLrmpZbjb20) |
 | Super Mario Flash | mod obtainable from [speedrunning Discord server](https://discord.com/invite/b6nm2dj); obsoleted by libTAS + Ruffle | [video](https://www.youtube.com/watch?v=5y9c3U2wcTY) |
