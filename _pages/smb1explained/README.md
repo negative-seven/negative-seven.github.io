@@ -1,5 +1,5 @@
 # TODO
-- spring despawn
+
 - hammer bro behavior
 - clipping through walls using invisible blocks
 - hammer bros walking on coins
@@ -20,13 +20,11 @@
 - why does full fpg not keep you on the flag
 - object subpixel carryover
 - clips into blocks
-- walljumps
 - minus world
 - jumping clip
 - wrong warp
 - vine death
 - weird 4-2 vine extend
-- staying inside an enemy
 - hammers bouncing off you, killing you offscreen, etc
 - vscreenwrap mushroom grab
 - level beyond the flagpole
@@ -37,7 +35,6 @@
 - frame rules
 - life counter wraparound
 - no brick particles on left side of screen
-- palette bug on bowser
 - uninitialized memory
 - jumping up through platforms
 

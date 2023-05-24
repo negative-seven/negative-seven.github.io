@@ -153,3 +153,17 @@ The pseudorandom number is used in these instances:
 * Hammer Bro movement
 * Blooper movement
 * Bowser movement
+\
+&nbsp;
+
+## Other
+
+The following bugs and mechanics have yet to be given a longer explanation or do not warrant one:
+
+* If a block is underneath a solid block, it is still possible to land on either of its top corners by clipping into the upper block by 2 pixels (requiring a `Player_X_Speed` of at least 17 - slightly more than 1 pixel per frame). This can often happen accidentally when running into a wall. Landing in such a scenario allows the player to jump - a maneuver which is called a "walljump".
+* If the player's post-hit invincibility runs out while colliding with an enemy hitbox, they will not be damaged by the enemy's hitbox for as long as they remain in contact with it.
+* Although fireballs disappear the moment the player loses the fire powerup, they retain their positions and will reappear there if fire power is regained: [video](https://www.youtube.com/watch?v=5fW87-ZoWmQ).
+* Bowser's palette may not be set to his usual green palette until an axe tile has been loaded. An example of this is the first Bowser encountered in 8-4 of the Japanese Super Mario Bros. 2 being blue. It's also possible to witness a miscolored Bowser at the end of a castle level by loading it without also loading the axe, and then waiting for it to come left.
+* Taking damage with fire power while a warp zone loads in preserves the fire power palette despite the player now being small: [video](https://www.youtube.com/watch?v=5SV-WEdlQSs).
+* In some cases, springs will seem to disappear and cease to function properly.
+* A frame perfect select button press on the title screen can skip one blinking palette update. This cannot be chained to prevent blinking for a prolonged period, due to there being a cooldown on switching between 1 player mode and 2 player mode.
