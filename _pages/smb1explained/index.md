@@ -3,6 +3,10 @@ layout: default
 title: Super Mario Bros. 1 bugs and mechanics explained
 ---
 
+This page is a collection of bugs and mechanics present in Super Mario Bros. 1. It is an attempt to document as many of the game's quirks as possible, with accurate technical explanations on why they happen. All such explanations come from my own reverse engineering efforts rather than relying on external information. Unfortunately, that makes working on this page a time-consuming process, and as such it is quite incomplete in its current state. Regardless, as of May 2023, I have not given up on expanding this page, and you can still expect to see changes and new additions over time.
+
+Variables are referred to by their names in doppelganger's SMBDIS.
+
 * toc
 {:toc}
 
