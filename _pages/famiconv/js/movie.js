@@ -2,6 +2,7 @@ class Movie {
     static fromFm2Format(filename, data) {
         let movie = new Movie();
         movie.filename = filename;
+        movie.sha1Hash = sha1Hash;
 
         let splitIndex = data.indexOf('|');
         let headerData = data.slice(0, splitIndex);
@@ -107,13 +108,18 @@ class Movie {
             `rerecordCount ${this.rerecordCount}`,
             'Core NesHawk',
         ].join('\n') + '\n';
-
+        
+        const BUTTONS = 'UDLRSsBA';
         let inputDataLines = ['[Input]'];
-        for (let input of this.inputs) {
-            const BUTTONS = 'UDLRSsBA';
-
+        let skippedInitialResets = false;
+        for (let input of this.inputs.slice(1)) {
+            if (!skippedInitialResets && input.softReset) {
+                continue;
+            }
+            skippedInitialResets = true;
+            
             let inputLine = '|..|........|'.split('');
-
+            
             for (let button of input.controller0) {
                 inputLine[4 + BUTTONS.indexOf(button)] = button;
             }
@@ -133,11 +139,12 @@ class Movie {
         return await movieData.generateAsync({ type: 'base64' });
     }
 
-    async toMmoFormatAsync() {
+    async toMmoV1FormatAsync() {
         let gameSettingsData = [
             'MesenVersion 0.9.9',
             'MovieFormatVersion 1',
             `GameFile ${this.romFilename}`,
+            `SHA1 ${this.sha1Hash.toUpperCase()}`,
             'Region NTSC',
             'ConsoleType Famicom',
             'Controller1 StandardController',
@@ -158,7 +165,7 @@ class Movie {
         let movieInfoData = 'Author\nDescription\n';
 
         let inputsDataLines = [];
-        for (let input of this.inputs) {
+        for (let input of this.inputs.slice(1)) {
             const BUTTONS = 'UDLRSsBA';
 
             let inputLine = '|..|........|.........'.split('');
@@ -178,6 +185,70 @@ class Movie {
         let movieData = new JSZip();
         movieData.file('GameSettings.txt', gameSettingsData);
         movieData.file('MovieInfo.txt', movieInfoData);
+        movieData.file('Input.txt', inputsData);
+        return await movieData.generateAsync({ type: 'base64' });
+    }
+
+    async toMmoV2FormatAsync() {
+        let gameSettingsData = [
+            'MesenVersion 2.0.0',
+            'MovieFormatVersion 2',
+            `GameFile ${this.romFilename}`,
+            'emu.consoleType Nes',
+            'video.integerFpsMode false',
+            'emulation.runAheadFrames 0',
+            'game.dipSwitches 0',
+            'nes.consoleType Nes001',
+            'nes.ramPowerOnState AllZeros',
+            'nes.randomizeMapperPowerOnState false',
+            'nes.randomizeCpuPpuAlignment false',
+            'nes.disableOamAddrBug false',
+            'nes.disablePaletteRead false',
+            'nes.disablePpu2004Reads false',
+            'nes.disableGameGenieBusConflicts false',
+            'nes.disablePpuReset false',
+            'nes.enableOamDecay false',
+            'nes.enablePpu2000ScrollGlitch false',
+            'nes.enablePpu2006ScrollGlitch false',
+            'nes.enablePpuOamRowCorruption false',
+            'nes.restrictPpuAccessOnFirstFrame false',
+            'nes.ppuExtraScanlinesAfterNmi 0',
+            'nes.ppuExtraScanlinesBeforeNmi 0',
+            'nes.region Auto',
+            'nes.lightDetectionRadius 0',
+            'nes.port1.type NesController',
+            'nes.port1SubPorts[0].type NesController',
+            'nes.port1SubPorts[1].type NesController',
+            'nes.port1SubPorts[2].type NesController',
+            'nes.port1SubPorts[3].type NesController',
+            'nes.port2.type NesController',
+            'nes.expPort.type None',
+            'nes.expPortSubPorts[0].type None',
+            'nes.expPortSubPorts[1].type None',
+            'nes.expPortSubPorts[2].type None',
+            'nes.expPortSubPorts[3].type None',
+        ].join('\n') + '\n';
+
+        let inputsDataLines = [];
+        for (let input of this.inputs.slice(2)) {
+            const BUTTONS = 'UDLRSsBA';
+
+            let inputLine = '|..|........|.........'.split('');
+
+            for (let button of input.controller0) {
+                inputLine[4 + BUTTONS.indexOf(button)] = button;
+            }
+
+            for (let button of input.controller1) {
+                inputLine[13 + BUTTONS.indexOf(button)] = button;
+            }
+
+            inputsDataLines.push(inputLine.join(''));
+        }
+        let inputsData = inputsDataLines.join('\n') + '\n';
+
+        let movieData = new JSZip();
+        movieData.file('GameSettings.txt', gameSettingsData);
         movieData.file('Input.txt', inputsData);
         return await movieData.generateAsync({ type: 'base64' });
     }
