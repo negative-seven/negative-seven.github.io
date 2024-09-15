@@ -16,20 +16,13 @@ exclude:
   - Gemfile.lock
   - LICENSE.md
   - README.md
+  - _pages/tetris_explained/resources/motion_canvas
 
 sass:
   sass_dir: _sass
-  style: :compressed
+  style: compressed
 
 collections:
   pages:
     output: true
     permalink: /:path:output_ext
-
-# Options
-
-# Replace this value and uncomment to enable Google Analytics tracking
-# ga_analytics: UA-000000-0
-
-# Navbar page list
-nav:

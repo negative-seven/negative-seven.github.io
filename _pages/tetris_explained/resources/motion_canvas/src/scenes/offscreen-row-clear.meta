@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "slow0",
+      "targetTime": 2.179009091434584
+    },
+    {
+      "name": "showHighlight",
+      "targetTime": 6.4869085465475695
+    },
+    {
+      "name": "fast0",
+      "targetTime": 15.87523144584977
+    },
+    {
+      "name": "slow1",
+      "targetTime": 17.879566220219957
+    },
+    {
+      "name": "fast1",
+      "targetTime": 22.211850801434064
+    },
+    {
+      "name": "slow2",
+      "targetTime": 24.578595305365837
+    },
+    {
+      "name": "hideHighlight",
+      "targetTime": 29.905588772069382
+    },
+    {
+      "name": "end",
+      "targetTime": 32.16022179149197
+    }
+  ],
+  "seed": 3146225178
+}
